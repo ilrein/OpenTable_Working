@@ -1,0 +1,20 @@
+<div class="container">
+<h2>Reserveration index</h2>
+</div>
+<%= @restaurant.name %>
+<%= form_for ([@restaurant, @reservation]) do |f| %>
+	 <%= f.label :party_size %>:
+  	<%= f.text_field :party_size %><br />
+  	<script type="text/javascript">
+  	$(function(){
+  		$('#reservation_reservation_date').datepicker();
+  	});
+	</script>
+  	<%= f.label :reservation_date %>:
+  	<%= f.text_field :reservation_date %><br />
+  	<%= f.label :rtime %>
+  	<%= select_tag(:rtime, options_for_select(
+  		[['8:00 AM'], ['9:00 AM']]
+  	)) %><br>
+  <%= f.submit %>
+<% end %>
