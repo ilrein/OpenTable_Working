@@ -1,7 +1,25 @@
-<h1>Restaurants#indexx</h1>
+<h1>Make a Reservation</h1>
+
+<div id="wrap">
+	<div id="columns" class="columns_2">
+
 <% @all.each do |x| %>
-	<%= link_to x.name, restaurant_reservations_path(x) %><br>
-	<%= image_tag x.image %><br>
-	
-<% end %> 
-<p><%= @reservation.user_id %> </p>
+
+
+		<figure>
+		<figcaption><%= link_to x.name, restaurant_reservations_path(x) %>
+			</figcaption><%= link_to image_tag x.image %><br>
+			<a class="button" href="#">Reserve Now</a>
+		</figure>
+
+		
+
+		<% end %> 
+	</div>
+	</div>
+
+		<p><%= @reservation.user_id %> </p>
+
+
+
+
