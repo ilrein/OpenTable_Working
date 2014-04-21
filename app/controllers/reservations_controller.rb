@@ -16,11 +16,11 @@ class ReservationsController < ApplicationController
     @reservation.reservation_date = new_reserv
     @reservation.rtime = params[:rtime]
     
-    if !check_seats(@reservation.party_size, @reservation.reservation_date, @reservation.rtime, @restaurant.capacity)
+    if !check_seats(@reservation.party_size, @reservation.reservation_date, @reservation.rtime, @restaurant.capacity, @restaurant)
       flash[:alert] = "Oh no! No more seats left."
       redirect_to restaurants_path(@reservation.restaurant.id)
     else
-      #@reservation.save
+      @reservation.save
       flash[:alert] = "Reservation made!"
     end
   end
@@ -31,11 +31,12 @@ class ReservationsController < ApplicationController
   def show
   end
   private
-  def check_seats(party_size, reservation_date, rtime, capacity)
+  def check_seats(party_size, reservation_date, rtime, capacity, my_resto)
     @reservations = Reservation.where("reservation_date = ?", reservation_date)
     @reservations = @reservations.where("rtime = ?", rtime)
+    @reservations = @reservations.where(restaurant: my_resto)
     @reserved_count = @reservations.sum(:party_size) + party_size
-    if @reserved_count >= capacity
+    if @reserved_count > capacity
       return false
     else return true
     end
