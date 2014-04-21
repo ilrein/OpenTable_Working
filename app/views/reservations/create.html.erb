@@ -1,2 +1,7 @@
-<h1>Reservations#create</h1>
-<p>Find me in app/views/reservations/create.html.erb</p>
+<h1>Reservations</h1>
+<p>Thanks for making a reservation at:</p>
+<%= @reservation.restaurant.name %> @ <%= @reservation.rtime %> for a party of <%= @reservation.party_size %><br><br>
+
+Reservations:capacity ratio @ <%= @reservation.rtime %> = <%= @reserved_count %>/<%= @restaurant.capacity %>
+
+<%= button_to "Homepage", root_path, :method => "get" %>

@@ -1,8 +1,7 @@
 <h1>Restaurants#indexx</h1>
 <% @all.each do |x| %>
 	<%= link_to x.name, restaurant_reservations_path(x) %><br>
-	<%= x.image %><br>
-	<%= x.current_capacity %>/<%= x.capacity %>
+	<%= image_tag x.image %><br>
 	
 <% end %> 
 <p><%= @reservation.user_id %> </p>
