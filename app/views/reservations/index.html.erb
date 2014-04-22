@@ -1,7 +1,7 @@
 <div class="container">
 <h2>Reserveration index</h2>
 </div>
-<%= @restaurant.name %>
+<h3><%= @restaurant.name %></h3>
 <%= form_for ([@restaurant, @reservation]) do |f| %>
 	 <%= f.label :party_size %>:
   	<%= f.text_field :party_size %><br />
