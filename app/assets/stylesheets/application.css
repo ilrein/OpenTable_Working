@@ -17,7 +17,16 @@
  h1 {
  	text-align: center;
  }
- 
+
+
+ .searchy {
+ 	padding-top: 5px;
+
+ }
+ .searchi {
+ 	padding-top: 2px;
+ 	left:-31.5px;
+ }
  .footer {
  	@include panel($panel-color, $panel-padding);
  	text-align:center;

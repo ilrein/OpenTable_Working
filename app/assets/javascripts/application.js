@@ -16,3 +16,18 @@
 //= require turbolinks
 //= require_tree .
 $(function(){ $(document).foundation(); });
+
+$(document).ready(function() {
+  $('#search-form').submit(function(event) {
+    event.preventDefault();
+    var searchValue = $('#search').val();
+
+    $.ajax({
+      url: '/restaurants?search=' + searchValue,
+      type: 'GET',
+      dataType: 'html'
+    }).done(function(data){
+      $('#columns').html(data);
+    });
+  });
+});
